@@ -38,7 +38,7 @@ jobs:
       - name: Build Angular app
         run: |
           cd sprint-planner
-          npm run build
+          npm run build --prod
       - name: Archive build
         uses: actions/upload-artifact@v3
         with:
