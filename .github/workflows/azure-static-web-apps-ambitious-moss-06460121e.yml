@@ -56,7 +56,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           api_location: "./sprint_planner.py" # Api source code path - optional
           app_location: "sprint-planner" 
-          output_location: "sprint-planner/dist/sprint-planner"           
+          output_location: ""           
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
