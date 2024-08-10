@@ -28,6 +28,8 @@ jobs:
         
       - name: Build Angular app
         run: npm install && npm run build --if-present
+        working-directory: sprint-planner
+        
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
