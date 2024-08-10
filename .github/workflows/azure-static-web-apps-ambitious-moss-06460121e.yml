@@ -39,10 +39,6 @@ jobs:
         run: |
           cd sprint-planner
           npm run build
-
-      - name: Run Python
-        run: |
-          python sprint_planner.py
       - name: Archive build
         uses: actions/upload-artifact@v3
         with:
