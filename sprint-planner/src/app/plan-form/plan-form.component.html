@@ -1,0 +1,101 @@
+<div class="form-container">
+    <h1>Sprint Planning Tool</h1>
+    <form [formGroup]="planForm" (ngSubmit)="onSubmit()" class="plan-form"> 
+        <div class="form-group"> 
+            <label for="num_developers">Number of Developers:</label> 
+            <input id="num_developers" formControlName="num_developers" type="number" class="form-control">
+        </div> <div formArrayName="tickets"> 
+            <div *ngFor="let ticket of tickets.controls; let i = index"> 
+                <div [formGroupName]="i" class="ticket-group"> 
+                    <div class="form-group">
+                        <label for="id-{{i}}">Ticket ID:</label> 
+                        <input id="id-{{i}}" formControlName="id" type="text" class="form-control"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="days-{{i}}">Days:</label> 
+                        <input id="days-{{i}}" formControlName="days" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="priority-{{i}}">Priority:</label> 
+                        <input id="priority-{{i}}" formControlName="priority" type="number" class="form-control"> 
+                    </div>
+                    
+                    <button type="button" (click)="removeTicket(i)" class="remove-button">Remove Ticket</button>
+                 </div> 
+                </div> 
+            </div>
+             <button type="button" (click)="addTicket()" class="add-button">Add Ticket</button> 
+             <button type="submit" class="submit-button">Submit</button> 
+    </form>
+</div>
+
+
+
+
+        <div *ngIf="result && result.length" class="result-container"> 
+            <h3>Result</h3> 
+            <table class="result-table"> 
+              <thead> 
+                <tr> 
+                  <th>Developer</th> 
+                  <th>Ticket ID</th> 
+                  <th>Start Day</th> 
+                  <th>End Day</th> 
+                </tr> </thead> 
+                <tbody> 
+                  <tr *ngFor="let item of result"> 
+                    <td>{{ item.developer }}</td> 
+                    <td>{{ item.ticket }}</td> 
+                    <td>{{ item.start_day }}</td> 
+                    <td>{{ item.end_day }}</td> 
+                  </tr> 
+                </tbody> 
+              </table> 
+              <!-- Timeline section --> 
+               <!-- <div class="timeline-container"> 
+                <h3>Project Timeline</h3> 
+                <div class="timeline">
+                     <div class="timeline-header">
+                         <div class="day-label">Day 1</div> 
+                         <div class="day-label">Day 2</div> 
+                         <div class="day-label">Day 3</div> 
+                         <div class="day-label">Day 4</div> 
+                         <div class="day-label">Day 5</div> 
+                         <div class="day-label">Day 6</div> 
+                         <div class="day-label">Day 7</div> 
+                         <div class="day-label">Day 8</div> 
+                         <div class="day-label">Day 9</div> 
+                         <div class="day-label">Day 10</div> 
+                        </div> <div class="timeline-body"> 
+                            <div *ngFor="let item of result" class="timeline-item" [ngStyle]="{'left': (item.start_day - 1) * 10 + '%', 'width': (item.end_day - item.start_day + 1) * 10 + '%'}"> 
+                                <div class="timeline-item-content"> Ticket {{ item.ticket }} 
+
+                                </div> 
+                            </div> 
+                        
+                        </div> 
+                    </div> 
+                </div>  -->
+
+                <!-- Timeline visualization --> 
+                 <div class="timeline-container"> 
+                    <h3>Project Timeline</h3> 
+                    <div class="timeline"> 
+                        <div class="timeline-header"> 
+                            <div class="day-label" *ngFor="let day of days">{{ day }}</div> 
+                        </div> 
+                        
+                        <div class="timeline-body"> 
+                            <div *ngFor="let dev of getDevelopers()" class="timeline-row"> 
+                                <div class="timeline-row-label">Developer {{ dev }}</div> 
+                                    <div class="timeline-item-container"> 
+                                        <div *ngFor="let item of getDeveloperTasks(dev)" class="timeline-item" 
+                                            [ngStyle]="{'left': (item.start_day - 1) * 10 + '%', 'width': (item.end_day - item.start_day + 1) * 10 + '%'}"> 
+                                            <div class="timeline-item-content"> Ticket {{ item.ticket }}</div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>

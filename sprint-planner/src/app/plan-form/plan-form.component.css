@@ -1,0 +1,165 @@
+.form-container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+} 
+
+h1 { 
+    text-align: center; 
+    color: #333; 
+} 
+
+.plan-form { 
+    display: flex; 
+    flex-direction: column;
+} 
+
+.form-group { 
+    margin-bottom: 15px;
+} 
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; 
+    font-weight: bold; 
+} 
+
+.form-control { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+} 
+
+.add-button {
+    background-color: rgb(65, 65, 211); 
+    color: white; border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; margin-right: 10px; 
+} 
+
+.submit-button {
+    background-color: green; 
+    color: white; border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; margin-right: 10px; 
+} 
+
+.remove-button { 
+    background-color: #dc3545; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    height: 25px;
+    margin-top: 33px;
+} 
+
+.add-button:hover, .submit-button:hover, .remove-button:hover { 
+    opacity: 0.9; 
+} 
+
+.result-container { 
+    margin-top: 20px;
+} 
+
+.result-table { 
+    width: 100%; border-collapse: collapse;
+    margin-top: 10px; 
+
+} 
+
+.result-table th, .result-table td { 
+    border: 1px solid #ddd; 
+    padding: 8px; text-align: left; 
+} 
+
+.result-table th { 
+    background-color: #f4f4f4;
+}
+
+.ticket-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ticket-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.ticket-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ticket-card h3 {
+    margin-top: 0;
+}
+
+/* Timeline Styles */ 
+
+.timeline-container { 
+    margin-top: 30px;
+} 
+
+.timeline { 
+    position: relative; 
+    border-top: 2px solid #007bff; 
+    padding: 10px 0; overflow: hidden; 
+    height: 900px;
+}
+
+.timeline-header { 
+    display: flex; 
+    justify-content: space-between; 
+} 
+
+.day-label { 
+    width: 10%; 
+    text-align: center; 
+    font-weight: bold; 
+    color: #333; 
+} 
+
+.timeline-body { 
+    position: relative; 
+    height: 40px; 
+
+} 
+
+.timeline-item { 
+    position: absolute; 
+    background-color: rgba(0, 123, 255, 0.3);
+    border: 1px solid #007bff; 
+    border-radius: 4px; color: #007bff;
+    
+    padding: 5px; box-sizing: border-box; 
+} 
+
+.timeline-row {
+    border: 1px;
+     border-radius: 5px;
+     padding: 10px;
+     background-color: #fff;
+     display: flex;
+     flex-direction: column;
+}
+
+.timeline-item-content { 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+
+}
