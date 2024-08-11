@@ -42,8 +42,7 @@ jobs:
         with:
           name: python-app
           path: |
-            release.zip
-            !venv/
+            sprint_planner.py
 
   deploy:
     runs-on: ubuntu-latest
