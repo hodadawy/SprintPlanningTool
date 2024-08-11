@@ -58,8 +58,6 @@ jobs:
           app_location: "sprint-planner" 
           output_location: "dist/sprint-planner/browser"           
           ###### End of Repository/Build Configurations ######
-      - name: Post-deployment script
-        run: python sprint_planner.py  # Another script if needed post-deployment
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
