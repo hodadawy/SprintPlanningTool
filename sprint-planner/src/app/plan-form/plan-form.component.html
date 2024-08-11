@@ -99,7 +99,7 @@
                                         <div class="timeline-row-label">{{ getDeveloperLabel(dev) }}</div> 
                                             <div class="timeline-item-container"> 
                                                 <div *ngFor="let item of getDeveloperTasks(sprint.tasks,dev)" class="timeline-item" 
-                                                [ngStyle]="{'left': (item.start_day - 1) * sprintDuration + '%', 'width': (item.end_day - item.start_day + 1) * sprintDuration + '%'}">
+                                                [ngStyle]="{'left': getLeftTimeline(item), 'width': getWidthTimeline(item)}">
                                                     <div class="timeline-item-content"> Ticket {{ item.ticket }}</div>
                                                 </div>
                                             </div>

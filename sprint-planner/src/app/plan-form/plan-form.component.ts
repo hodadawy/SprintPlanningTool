@@ -206,5 +206,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       return uniqueDevs.size;
     }
 
+    getLeftTimeline(item: any): any{
+      return (item.start_day - 1) / this.sprintDuration * 100 + '%';
+    }
+
+    getWidthTimeline(item: any): any{
+      return (item.end_day - item.start_day + 1)/ this.sprintDuration * 100 + '%';
+    }
+
   
   }
