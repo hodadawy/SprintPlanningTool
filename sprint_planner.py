@@ -1,8 +1,7 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import datetime
-
 
 app = Flask(__name__)
 CORS(app)
@@ -11,37 +10,50 @@ CORS(app)
 def plan_sprint():
     data = request.json
     num_developers = data['num_developers']
-    tickets = data['tickets']
+    tickets = data['tickets']  # A list of dictionaries with 'id', 'days', and 'priority'
 
-    #sort tickets
+    # Sort tickets by priority (ascending)
     sorted_tickets = sorted(tickets, key=lambda x: x['priority'])
 
-    #set up timeline
-    num_days_in_sprint = 10
-    developers_sprints = {i: [] for i in range(num_developers)}
-    developers_days_left = {i: num_days_in_sprint for i in range(num_developers)}
+    num_days_in_sprint = 10  # Assume 10 working days per sprint
+    developer_sprints = {i: [] for i in range(num_developers)}
+    sprints = []
 
-    sprint_timeline = []
+    # Function to create a new sprint with the current tickets
+    def create_sprint(sprint_tickets):
+        sprint_timeline = []
+        developer_days_left = {i: num_days_in_sprint for i in range(num_developers)}
+        for ticket in sprint_tickets:
+            assigned = False
+            for dev in range(num_developers):
+                if developer_days_left[dev] >= ticket['days']:
+                    developer_sprints[dev].append(ticket)
+                    developer_days_left[dev] -= ticket['days']
+                    sprint_timeline.append({
+                        'developer': dev,
+                        'ticket': ticket['id'],
+                        'start_day': num_days_in_sprint - developer_days_left[dev] - ticket['days'] + 1,
+                        'end_day': num_days_in_sprint - developer_days_left[dev]
+                    })
+                    assigned = True
+                    break
+            if not assigned:
+                # Mark ticket for next sprint
+                remaining_tickets.append(ticket)
+        return sprint_timeline
 
-    for ticket in sorted_tickets:
-        assigned = False
-        for dev in range(num_developers):
-            if developers_days_left[dev] >= ticket['days']:
-                #
-                start_day = num_days_in_sprint - developers_days_left[dev]
-                end_day = start_day + ticket['days'] - 1
-                sprint_timeline.append({
-                    'developer': dev,
-                    'ticket': ticket['id'],
-                    'start_day': start_day,
-                    'end_day':  end_day 
-                })
-                developers_days_left[dev] -= ticket['days']
-                assigned = True
-                break
-        if not assigned:
-            pass
-    return jsonify(sprint_timeline)
-        
+    remaining_tickets = []
+    while sorted_tickets or remaining_tickets:
+        sprint_tickets = sorted_tickets[:]
+        sprint_timeline = create_sprint(sprint_tickets)
+        if sprint_timeline:
+            sprints.append({
+                'tasks': sprint_timeline
+            })
+        sorted_tickets = remaining_tickets
+        remaining_tickets = []
+
+    return jsonify({'sprints': sprints})
+
 if __name__ == '__main__':
     app.run(debug=True)
