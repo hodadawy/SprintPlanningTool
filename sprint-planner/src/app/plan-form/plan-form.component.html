@@ -1,44 +1,43 @@
+<!-- src/app/app.component.html -->
 <div class="container">
-    <div class="left-sidebar" [ngClass]="{'collapsed': isCollapsed}">
-        <button class="collapse-btn" (click)="toggleSidebar()">
-            <span [ngClass]="{'arrow-left': !isCollapsed, 'arrow-right': isCollapsed}"></span>
-        </button>
-
-        <div class="left-content">
-            <h1>Sprint Planning Tool</h1>
-            <div class="form-container-row">
-                <div class="form-group-row">
-                    <label class="form-label" for="startDate">Plan Start Date:</label>
-                    <input id="startDate" [(ngModel)]="startDate" name="startDate" class="form-input" type="date" required>
-                </div>
-                <div class="form-group-row">
-                    <label class="form-label" for="developerNames">Developer Names (comma separated):</label>
-                    <input type="text" id="developerNames" [(ngModel)]="developerNames" class="form-input" name="developerNames">
-                </div>
+    <div class="left-panel">
+      <div class="left-content">
+        <h1>Sprint Planning Tool</h1>
+        <div class="form-container-row">
+            <div class="form-group-row">
+                <label class="form-label" for="startDate">Plan Start Date:</label>
+                <input id="startDate" [(ngModel)]="startDate" name="startDate" class="form-input" type="date" required>
             </div>
-
-            <div *ngIf="result && result.length">
-                <p>You can finish in: {{result.length}} sprints</p>
-                <p>DeliveryDate: {{getDeliveryDate()}}</p>
-                <p>Required Resources: {{getUniqueDevelopersCount()}} <span *ngIf="getUniqueDevelopersCount() <= 1">Developer</span> <span *ngIf="getUniqueDevelopersCount() > 1">Developers</span></p>
+            <div class="form-group-row">
+                <label class="form-label" for="num_developers_copy">Number of Developers:</label>
+                <input type="text" id="developerNames" [(ngModel)]="num_of_devs" class="form-input" name="developerNames">
             </div>
-
-
-
+            <div class="form-group-row">
+                <label class="form-label" for="developerNames">Developer Names (comma separated):</label>
+                <input type="text" id="developerNames" [(ngModel)]="developerNames" class="form-input" name="developerNames">
+            </div>
         </div>
+
+        <div *ngIf="result && result.length">
+            <p>You can finish in: {{result.length}} sprints</p>
+            <p>DeliveryDate: {{getDeliveryDate()}}</p>
+            <p>Required Resources: {{getUniqueDevelopersCount()}} <span *ngIf="getUniqueDevelopersCount() <= 1">Developer</span> <span *ngIf="getUniqueDevelopersCount() > 1">Developers</span></p>
+        </div>
+
     </div>
-    <div class="right-content">
+    </div>
+    <div class="right-panel">
         <div class="form-container-row">
             <form [formGroup]="planForm" (ngSubmit)="onSubmit()" class="plan-form"> 
-                <div class="form-group-row"> 
+                <div class="form-group-row" style="display: none;"> 
                     <label for="num_developers">Number of Developers:</label> 
-                    <input id="num_developers" formControlName="num_developers" type="number" class="form-control">
+                    <input id="num_developers" formControlName="num_developers" [(ngModel)]="num_of_devs" type="number" class="form-control">
                 </div>
                 <h2>Backlog</h2>
                 <div formArrayName="tickets"> 
                     <div *ngFor="let ticket of tickets.controls; let i = index"> 
                         <div [formGroupName]="i" class="ticket-group"> 
-                            <div class="form-group" style="width:45%">
+                            <div class="form-group">
                                 <label for="id-{{i}}">Ticket ID:</label> 
                                 <input id="id-{{i}}" formControlName="id" type="text" class="form-control"> 
                             </div>
@@ -105,7 +104,7 @@
                     </div>
         </div>
     </div>
-</div>
+  </div>
 
 
 
