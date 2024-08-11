@@ -1,5 +1,7 @@
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%E2%98%95%EF%B8%8F-orange)](https://www.buymeacoffee.com/hodaeldawy)
+
 # Sprint Planning Tool
-This tool is designed to help software development teams, particulary those working with Agile methodologies, plan their sprints and relases efficently. 
+This tool is designed to help software development teams, particulary those working with Agile methodologies, plan their sprints and relases efficently. Use it for free on https://ambitious-moss-06460121e.5.azurestaticapps.net/
 
 
 ### Input:
