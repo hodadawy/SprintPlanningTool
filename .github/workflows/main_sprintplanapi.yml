@@ -38,7 +38,4 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'sprintplanapi'
-          slot-name: 'Production'
-          package: .
-          startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 sprint_planner:app'
-          
+          slot-name: 'Production'          
