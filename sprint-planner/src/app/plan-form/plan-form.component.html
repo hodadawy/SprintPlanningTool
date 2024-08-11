@@ -9,8 +9,12 @@
                 <input id="startDate" [(ngModel)]="startDate" name="startDate" class="form-input" type="date" required>
             </div>
             <div class="form-group-row">
+                <label class="form-label" for="sprintDuration_copy">Sprint Duration (Days):</label>
+                <input type="number" id="sprintDuration_copy" [(ngModel)]="sprintDuration" class="form-input" name="developerNames">
+            </div>
+            <div class="form-group-row">
                 <label class="form-label" for="num_developers_copy">Number of Developers:</label>
-                <input type="text" id="developerNames" [(ngModel)]="num_of_devs" class="form-input" name="developerNames">
+                <input type="number" id="num_developers_copy" [(ngModel)]="num_of_devs" class="form-input" name="developerNames">
             </div>
             <div class="form-group-row">
                 <label class="form-label" for="developerNames">Developer Names (comma separated):</label>
@@ -29,6 +33,9 @@
     <div class="right-panel">
         <div class="form-container-row">
             <form [formGroup]="planForm" (ngSubmit)="onSubmit()" class="plan-form"> 
+                <div class="form-group-row" style="display: none;"> 
+                    <input id="sprint_duration" formControlName="sprint_duration" [(ngModel)]="sprintDuration" type="number" class="form-control">
+                </div>
                 <div class="form-group-row" style="display: none;"> 
                     <label for="num_developers">Number of Developers:</label> 
                     <input id="num_developers" formControlName="num_developers" [(ngModel)]="num_of_devs" type="number" class="form-control">
@@ -92,7 +99,7 @@
                                         <div class="timeline-row-label">{{ getDeveloperLabel(dev) }}</div> 
                                             <div class="timeline-item-container"> 
                                                 <div *ngFor="let item of getDeveloperTasks(sprint.tasks,dev)" class="timeline-item" 
-                                                [ngStyle]="{'left': (item.start_day - 1) * 10 + '%', 'width': (item.end_day - item.start_day + 1) * 10 + '%'}">
+                                                [ngStyle]="{'left': (item.start_day - 1) * sprintDuration + '%', 'width': (item.end_day - item.start_day + 1) * sprintDuration + '%'}">
                                                     <div class="timeline-item-content"> Ticket {{ item.ticket }}</div>
                                                 </div>
                                             </div>

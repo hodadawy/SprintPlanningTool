@@ -10,12 +10,13 @@ CORS(app)
 def plan_sprint():
     data = request.json
     num_developers = data['num_developers']
+    sprint_duration = data['sprint_duration']
     tickets = data['tickets']  # A list of dictionaries with 'id', 'days', and 'priority'
 
     # Sort tickets by priority (ascending)
     sorted_tickets = sorted(tickets, key=lambda x: x['priority'])
 
-    num_days_in_sprint = 10  # Assume 10 working days per sprint
+    num_days_in_sprint = sprint_duration 
     developer_sprints = {i: [] for i in range(num_developers)}
     sprints = []
 

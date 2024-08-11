@@ -25,7 +25,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 }) 
   export class PlanFormComponent { 
     planForm: FormGroup; 
-    days: number[] = Array.from({length: 10}, (_, i) => i+ 1);
+    days: number[] = Array.from({length: this.sprintDuration}, (_, i) => i+ 1);
     result: any[] = [];
     startDate: string =  this.getCurrentDate(); 
     developerNames: string = ''; 
@@ -36,16 +36,28 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       private planService: SprintService) { 
         this.planForm = this.fb.group({
            num_developers: [3, [Validators.required, Validators.min(1)]], 
+           sprint_duration: [10, [Validators.required, Validators.min(1)]], 
            tickets: this.fb.array([]) }); // Initialize with at least one ticket form
            this.addTicket(); 
       } 
 
-      get num_of_devs(): string {
+      get num_of_devs(): any {
         return this.planForm.get('num_developers')?.value;
       }
     
-      set num_of_devs(value: string) {
+      set num_of_devs(value: any) {
         this.planForm.get('num_developers')?.setValue(value);
+      }
+
+      
+      get sprintDuration(): any {
+        if(this.planForm)
+          return this.planForm.get('sprint_duration')?.value;
+      }
+    
+      set sprintDuration(value: any) {
+        this.planForm.get('sprint_duration')?.setValue(value);
+        this.days = Array.from({length: value}, (_, i) => i+ 1);
       }
 
       get tickets() {
@@ -98,7 +110,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   
     // Function to calculate the start date of the mth sprint
     private getSprintStartDate(startDate: Date, sprintNumber: number): Date {
-      const daysBetweenSprints = (sprintNumber - 1) * 10;
+      const daysBetweenSprints = (sprintNumber - 1) * this.sprintDuration;
       const sprintStartDate = new Date(startDate);
       sprintStartDate.setDate(sprintStartDate.getDate() + daysBetweenSprints);
       return sprintStartDate;
@@ -150,7 +162,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       let sprintEndDate = new Date(currentDate);
   
       for (let i = 0; i < this.result.length; i++) {
-        sprintEndDate = this.addBusinessDays(sprintEndDate, 10);
+        sprintEndDate = this.addBusinessDays(sprintEndDate, this.sprintDuration);
       }
   
       return sprintEndDate;
