@@ -46,7 +46,12 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       }
     
       set num_of_devs(value: any) {
-        this.planForm.get('num_developers')?.setValue(value);
+        if(this.planForm){
+          const oldValue = this.planForm.get('num_developers')?.value;
+          if(value != oldValue){
+            this.planForm.get('num_developers')?.setValue(value);
+          }
+        }
       }
 
       
@@ -56,7 +61,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       }
     
       set sprintDuration(value: any) {
-        this.planForm.get('sprint_duration')?.setValue(value);
+        if(this.planForm )
+        {
+          const oldValue = this.planForm.get('sprint_duration')?.value;
+          if(value != oldValue){
+            this.planForm.get('sprint_duration')?.setValue(value);
+          }
+        }
         this.days = Array.from({length: value}, (_, i) => i+ 1);
       }
 

@@ -249,6 +249,7 @@ h1 {
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
+    margin-left: -0.8rem;
 }
 
 .form-input:focus {
