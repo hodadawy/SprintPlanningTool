@@ -77,4 +77,5 @@ jobs:
         with:
           app-name: 'mysprintapi'
           slot-name: 'Production'
+          package: sprint_planner.py
           
