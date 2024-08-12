@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
  import { Observable } from 'rxjs';
   @Injectable({ providedIn: 'root' }) 
   export class SprintService { 
-    private apiUrl = 'http://192.168.4.1/plan'; 
+    private apiUrl = 'https://192.168.4.1/plan'; 
     constructor(private http: HttpClient) { } 
     
     planSprint(data: any): Observable<any> { 
