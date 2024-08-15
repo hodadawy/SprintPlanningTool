@@ -90,14 +90,7 @@ h1 {
 
 
 .remove-button { 
-    background-color: #dc3545; 
-    color: white; 
-    border: none; 
-    padding: 5px 10px; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    height: 25px;
-    margin-top: 33px;
+    margin: 20px;
 } 
 
 .add-button:hover, .submit-button:hover, .remove-button:hover { 
@@ -140,6 +133,14 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.ticket-id {
+    flex: 2;
+}
+
+.ticket-num{
+    flex: 0.2;
 }
 
 @media (max-width: 768px) {
@@ -209,6 +210,7 @@ h1 {
      background-color: #fff;
      display: flex;
      flex-direction: column;
+     margin-bottom: 15px;
 }
 
 .timeline-item-content { 

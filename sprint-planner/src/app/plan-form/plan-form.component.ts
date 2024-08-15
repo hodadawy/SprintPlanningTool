@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'; 
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'; 
 import { SprintService } from '../plan-service';
 import { formatDate } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -7,20 +7,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 @Component({ 
   selector: 'app-plan-form', 
   templateUrl: './plan-form.component.html', 
-  styleUrls: ['./plan-form.component.css'],
-  animations: [
-    trigger('toggleAnimation', [
-      state('collapsed', style({
-        width: '0', // for desktop
-        height: '0' // for mobile
-      })),
-      state('expanded', style({
-        width: '*', // for desktop
-        height: '*' // for mobile
-      })),
-      transition('expanded <=> collapsed', animate('0.5s ease-in-out'))
-    ])
-  ]
+  styleUrls: ['./plan-form.component.css']
 
 }) 
   export class PlanFormComponent { 
@@ -28,6 +15,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     days: number[] = Array.from({length: this.sprintDuration}, (_, i) => i+ 1);
     result: any[] = [];
     startDate: string =  this.getCurrentDate(); 
+    readonly date = new FormControl(new Date());
     developerNames: string = ''; 
     developers: number[] = []; 
     isCollapsed = false;

@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app.routes";
 import { PlanFormComponent } from "./plan-form/plan-form.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from "./material.module";
 
 
 @NgModule({
@@ -16,12 +18,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MaterialModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+    provideAnimationsAsync()
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
