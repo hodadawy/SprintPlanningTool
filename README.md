@@ -38,9 +38,8 @@ Angular
 - Install Angular using "npm install -g @angular/cli"
 - Run the angular application using "ng serve"
 
-<img width="647" alt="image" src="https://github.com/user-attachments/assets/e74e0d93-55f3-41dd-ae21-fec71046a4ed">
+<img width="1241" alt="image" src="https://github.com/user-attachments/assets/148ea71e-cf71-4de2-98e4-4838846fd83e">
 
-<img width="1230" alt="image" src="https://github.com/user-attachments/assets/07ef9822-22e9-49b8-a195-faf78e7d5356">
 
 
 
