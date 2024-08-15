@@ -36,6 +36,7 @@ Angular
 - Install Visual Studio Code 
 - Download and Install Node.js
 - Install Angular using "npm install -g @angular/cli"
+- Install Dependancies "npm install"
 - Run the angular application using "ng serve"
 
 <img width="1241" alt="image" src="https://github.com/user-attachments/assets/148ea71e-cf71-4de2-98e4-4838846fd83e">
