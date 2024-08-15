@@ -1,7 +1,7 @@
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%E2%98%95%EF%B8%8F-orange)](https://www.buymeacoffee.com/hodaeldawy)
 
 # Sprint Planning Tool
-This tool is designed to help software development teams, particulary those working with Agile methodologies, plan their sprints and relases efficently. Use it for free on https://ambitious-moss-06460121e.5.azurestaticapps.net/
+This tool is designed to help software development teams, particulary those working with Agile methodologies, plan their sprints and relases efficently.
 
 
 ### Input:
@@ -36,11 +36,11 @@ Angular
 - Install Visual Studio Code 
 - Download and Install Node.js
 - Install Angular using "npm install -g @angular/cli"
+- Install Dependancies "npm install"
 - Run the angular application using "ng serve"
 
-<img width="647" alt="image" src="https://github.com/user-attachments/assets/e74e0d93-55f3-41dd-ae21-fec71046a4ed">
+<img width="1241" alt="image" src="https://github.com/user-attachments/assets/148ea71e-cf71-4de2-98e4-4838846fd83e">
 
-<img width="1230" alt="image" src="https://github.com/user-attachments/assets/07ef9822-22e9-49b8-a195-faf78e7d5356">
 
 
 
