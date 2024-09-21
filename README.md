@@ -31,7 +31,7 @@ Angular
 
 - Download Python and install it in your system, make sure to choose to update the Envirnoment Variables
 - Clone the repository to your local
-- Install the required python libraries on Command Prompt using "pip install flask pandas matplotlib"
+- Install the required python libraries on Command Prompt using "pip install flask flask-cors pandas matplotlib"
 - Start the Flask server by that command "python sprint_planner.py"
 - Install Visual Studio Code 
 - Download and Install Node.js
